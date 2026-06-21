@@ -1,0 +1,71 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "across-protocol-py"
+version = "0.1.0"
+description = "Typed Python client for the Across Protocol bridge API (sync + async)."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [{ name = "Robert Ruben" }]
+keywords = ["across", "bridge", "cross-chain", "ethereum", "defi", "web3"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Typing :: Typed",
+]
+dependencies = [
+    "httpx>=0.24",
+    "pydantic>=2.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/robertruben98/across-protocol-py"
+Repository = "https://github.com/robertruben98/across-protocol-py"
+Documentation = "https://docs.across.to"
+Issues = "https://github.com/robertruben98/across-protocol-py/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "respx>=0.20",
+    "ruff>=0.4",
+    "mypy>=1.8",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/across_protocol"]
+
+[tool.ruff]
+target-version = "py39"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "B", "UP", "N", "C4", "SIM"]
+# Project targets Python 3.9; do not rewrite typing.Optional/Union to PEP 604
+# X | None syntax, which is not valid in runtime-evaluated pydantic annotations.
+ignore = ["UP007", "UP045"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_unused_configs = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+markers = [
+    "integration: live network tests against the real Across API (deselected by default)",
+]
+addopts = "-m 'not integration'"
