@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/robertruben98/across-protocol-py/actions/workflows/ci.yml/badge.svg)](https://github.com/robertruben98/across-protocol-py/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/across-protocol-py.svg)](https://pypi.org/project/across-protocol-py/)
+[![Docs](https://img.shields.io/badge/docs-online-blue)](https://robertruben98.github.io/across-protocol-py/)
 [![Python versions](https://img.shields.io/pypi/pyversions/across-protocol-py.svg)](https://pypi.org/project/across-protocol-py/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
